@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nan Aent Phoo Sin | Law Student & Web Developer</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+        
+        .logo {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        section {
+            padding: 4rem 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .skill {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .project-info p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid var(--accent);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--secondary);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--secondary);
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--secondary);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--secondary) transparent transparent;
+        }
+        
+        .right::after {
+            left: -16px;
+        }
+        
+        .content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0;
+                padding: 1rem;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .container::before {
+                left: 60px;
+                border: medium solid var(--secondary);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--secondary) transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 15px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="https://via.placeholder.com/150" alt="Nan Aent Phoo Sin" class="profile-img">
+            <h1>Nan Aent Phoo Sin</h1>
+            <p class="tagline">Law Student | Web Developer | Future Legal Expert</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Nan Aent Phoo Sin</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#goals">Goals</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">☰</div>
+        </div>
+    </nav>
+    
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Hello! I'm Nan Aent Phoo Sin, a dedicated law student at Hpa-an University with a passion for technology and web development. I'm currently expanding my skillset by learning computer science and web development during my summer break.</p>
+                <p>My journey combines my analytical legal training with creative technical skills, allowing me to approach problems from multiple perspectives. I believe this unique combination will help me stand out in the legal field while also opening doors to innovative legal tech solutions.</p>
+                <p>When I'm not studying law or coding, you can find me exploring new technologies, reading about legal innovations, or working on personal projects that bridge my two areas of interest.</p>
+                
+                <h3>My Skills</h3>
+                <div class="skills">
+                    <span class="skill">Legal Research</span>
+                    <span class="skill">HTML/CSS</span>
+                    <span class="skill">JavaScript</span>
+                    <span class="skill">UI/UX Design</span>
+                    <span class="skill">Critical Thinking</span>
+                    <span class="skill">Public Speaking</span>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://via.placeholder.com/500x400" alt="Nan working" style="width:100%; border-radius:8px;">
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="projects">
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200" alt="Dating App Project" class="project-img">
+                <div class="project-info">
+                    <h3>Dating App Prototype</h3>
+                    <p>A modern dating application with unique matching algorithms and safety features, developed as part of my web development learning journey.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200" alt="Legal Resource Website" class="project-img">
+                <div class="project-info">
+                    <h3>Legal Resource Hub</h3>
+                    <p>A website compiling legal resources and simplified explanations of complex legal concepts for students and the general public.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200" alt="University Portal" class="project-img">
+                <div class="project-info">
+                    <h3>University Portal Redesign</h3>
+                    <p>A conceptual redesign of our university portal with improved UX/UI to make information more accessible to students.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="education">
+        <h2>Education & Journey</h2>
+        <div class="timeline">
+            <div class="container left">
+                <div class="content">
+                    <h3>2022 - Present</h3>
+                    <p><strong>Hpa-an University</strong><br>
+                    Bachelor of Laws (LL.B.)<br>
+                    Specializing in Constitutional Law and Legal Technology</p>
+                </div>
+            </div>
+            <div class="container right">
+                <div class="content">
+                    <h3>Summer 2023</h3>
+                    <p><strong>Web Development Intensive</strong><br>
+                    Self-taught journey in HTML, CSS, JavaScript<br>
+                    Created multiple web projects including a dating app prototype</p>
+                </div>
+            </div>
+            <div class="container left">
+                <div class="content">
+                    <h3>2021</h3>
+                    <p><strong>High School Graduation</strong><br>
+                    Top 10% of class with honors in Social Sciences<br>
+                    Debate team captain and student council member</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="goals">
+        <h2>My Aspirations</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Becoming Pro Max in Law</h3>
+                <p>My ultimate goal is to become one of the most respected legal professionals in Myanmar, combining traditional legal expertise with innovative technological solutions. I aim to be at the forefront of legal tech development while maintaining excellence in conventional legal practice.</p>
+                
+                <h3>Bridging Law and Technology</h3>
+                <p>I envision creating platforms that make legal information more accessible to the public and developing tools that help legal professionals work more efficiently. My web development skills will be crucial in bringing these ideas to life.</p>
+                
+                <h3>Public Legal Education</h3>
+                <p>I'm passionate about educating people about their rights and responsibilities under the law. Through clear communication and well-designed platforms, I hope to demystify complex legal concepts for the general public.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://via.placeholder.com/500x400" alt="Future Goals" style="width:100%; border-radius:8px;">
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm always open to discussing potential collaborations, internship opportunities, or just chatting about law and technology. Feel free to reach out!</p>
+                
+                <form style="margin-top:2rem;">
+                    <div style="margin-bottom:1rem;">
+                        <label for="name" style="display:block; margin-bottom:0.5rem;">Your Name</label>
+                        <input type="text" id="name" style="width:100%; padding:0.8rem; border-radius:5px; border:1px solid #ddd;">
+                    </div>
+                    <div style="margin-bottom:1rem;">
+                        <label for="email" style="display:block; margin-bottom:0.5rem;">Email Address</label>
+                        <input type="email" id="email" style="width:100%; padding:0.8rem; border-radius:5px; border:1px solid #ddd;">
+                    </div>
+                    <div style="margin-bottom:1rem;">
+                        <label for="message" style="display:block; margin-bottom:0.5rem;">Message</label>
+                        <textarea id="message" rows="5" style="width:100%; padding:0.8rem; border-radius:5px; border:1px solid #ddd;"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+            <div class="about-image">
+                <h3>Contact Information</h3>
+                <p style="margin-top:1rem;"><strong>Email:</strong> nan.aent.phoo.sin@example.com</p>
+                <p><strong>University:</strong> Hpa-an University of Law</p>
+                <p><strong>Location:</strong> Hpa-an, Myanmar</p>
+                
+                <div class="social-links" style="justify-content:flex-start; margin-top:2rem;">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Facebook</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2023 Nan Aent Phoo Sin. All rights reserved.</p>
+        <p>Law Student | Web Developer | Future Legal Expert</p>
+        <div class="social-links">
+            <a href="#">📘</a>
+            <a href="#">🐦</a>
+            <a href="#">💼</a>
+            <a href="#">📷</a>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // Animation on scroll
+        window.addEventListener('scroll', reveal);
+        
+        function reveal() {
+            const reveals = document.querySelectorAll('.project-card, .container');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const revealTop = reveals[i].getBoundingClientRect().top;
+                const revealPoint = 150;
+                
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                } else {
+                    reveals[i].classList.remove('active');
+                }
+            }
+        }
+        
+        // Initial call to reveal elements already in view
+        reveal();
+    </script>
+</body>
+</html>
